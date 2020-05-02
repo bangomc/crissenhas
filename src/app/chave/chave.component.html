@@ -1,0 +1,25 @@
+<div class="container">
+    <form [formGroup]="formulario" (ngSubmit)="ok()">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Chave de Criptografia</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <p>
+                    Essa chave será usada para criptografar e descriptografar suas senhas.<br>
+                    Ela não é armazenada e você precisará dela para ver suas senhas.<br>
+                    Ela também deve ser informada de tempos em tempos durante a utilização do sistema.
+                </p>
+                <mat-form-field>
+                    <input #inputChave type="password" matInput class="form-control" formControlName="chave" autofocus>
+                </mat-form-field>
+                <span mat-icon-button (click)="flip(inputChave)">
+                    <mat-icon>vpn_key</mat-icon>
+                </span>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>OK</button>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</div>
