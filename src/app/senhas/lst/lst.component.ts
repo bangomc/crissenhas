@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
-import { DelDialogTemplateComponent } from 'src/app/lista/del-dialog-template/del-dialog-template.component';
 import { ItemSenha } from 'src/app/model/item-senha';
 import { CriptoService } from 'src/app/service/cripto.service';
 import { DbService } from 'src/app/service/db.service';
 import { Router } from '@angular/router';
 import { ConstantesService } from 'src/app/service/constantes.service';
+import { DelDialogTemplateComponent } from '../del/del-dialog-template/del-dialog-template.component';
 
 @Component({
   selector: 'app-lst',
