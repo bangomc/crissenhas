@@ -19,6 +19,23 @@ import { LstComponent } from './senhas/lst/lst.component';
 import { AddComponent } from './senhas/add/add.component';
 import { DelComponent } from './senhas/del/del.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxIndexedDBModule, DBConfig } from 'ngx-indexed-db';
+
+const dbConfig: DBConfig  = {
+  name: 'crissenhasdb',
+  version: 1,
+  objectStoresMeta: [{
+    store: 'itemsenha',
+    storeConfig: { keyPath: 'id', autoIncrement: true },
+    storeSchema: [
+      { name: 'nome', keypath: 'nome', options: { unique: false } },
+      { name: 'endereco', keypath: 'endereco', options: { unique: false } },
+      { name: 'descricao', keypath: 'descricao', options: { unique: false } },
+      { name: 'userName', keypath: 'userName', options: { unique: false } },
+      { name: 'userPass', keypath: 'userPass', options: { unique: false } }
+    ]
+  }]
+};
 
 @NgModule({
   declarations: [
@@ -42,7 +59,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     MatDialogModule,
     MatIconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxIndexedDBModule.forRoot(dbConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]

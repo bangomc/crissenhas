@@ -23,37 +23,53 @@ export class LstComponent implements OnInit {
     private constantesService: ConstantesService) { }
 
   ngOnInit(): void {
-    this.db.iniciar();
-    this.lista = this.db.getAll();
+    this.listar();
   }
 
-  flip(componente){
+  listar(): void {
+    this.db.getAll()
+      .then(items=>{
+        this.lista = items;
+      },error=>{
+        console.log(error);
+      });
+  }
 
-    if(!this.constantesService.getChaveAES()){
-      this.router.navigate([""]);
-    }
-
+  flip(componente,itemId){
     if('password' == componente.type){
+      if(!this.constantesService.getChaveAES()){
+        this.router.navigate([""]);
+      }  
       componente.value = this.cripto.descriptografar(componente.value);
       componente.type = 'text';
     }else{
-      componente.value = this.cripto.criptografar(componente.value);
-      componente.type = 'password';
+      this.db.get(itemId)
+        .then(item=>{
+          componente.value = item.userPass;
+          componente.type = 'password';
+        },error=>{
+          console.log(error);
+        });
     }
   }
 
-  excluir(chave: string){
-    
+  excluir(itemId){
+    this.db.del(itemId)
+      .then(()=>{
+        this.listar();
+      },error=>{
+        console.log(error);
+      });
   }
 
-  showDialogDel(chave: string){
+  showDialogDel(itemId){
     let confDialog: MatDialogConfig = new MatDialogConfig();
     confDialog.data = {resposta: 'sim'};
     const delDialogRef = this.delDialog.open(DelDialogTemplateComponent,confDialog);
 
     delDialogRef.afterClosed().subscribe(result=>{
       if('sim'==result){
-        this.excluir(chave);
+        this.excluir(itemId);
       }
     });
   }

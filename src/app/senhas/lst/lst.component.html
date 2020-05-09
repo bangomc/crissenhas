@@ -3,7 +3,7 @@
       <mat-card-header>
         <mat-card-title>
           {{item.nome}}
-          <button mat-button (click)="showDialogDel(item.key)">DEL</button>
+          <button mat-button (click)="showDialogDel(item.id)">DEL</button>
         </mat-card-title>
         <mat-card-subtitle>{{item.endereco}}</mat-card-subtitle>
       </mat-card-header>
@@ -19,7 +19,7 @@
             <mat-form-field class="formulario-senha">
               <input #inputSenha matInput type="password" placeholder="Senha" class="form-control" value="{{item.userPass}}" disabled="true">
             </mat-form-field>
-            <button mat-icon-button (click)="flip(inputSenha)">
+            <button mat-icon-button (click)="flip(inputSenha,item.id)">
                 <mat-icon>vpn_key</mat-icon>
             </button>
           </div>

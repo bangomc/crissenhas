@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class ConstantesService {
 
   private chaveAES: string = null;
+  private tabelaItemSenha: string = "itemsenha";
 
   constructor() { }
 
@@ -18,5 +19,9 @@ export class ConstantesService {
 
   getChaveAES(): string {
     return this.chaveAES;
+  }
+
+  getTabelaItemSenha(): string {
+    return this.tabelaItemSenha;
   }
 }

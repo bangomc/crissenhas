@@ -16,13 +16,7 @@ export class ListaComponent implements OnInit {
   constructor(public delDialog: MatDialog, private cripto: CriptoService) { }
 
   ngOnInit(): void {
-    this.lista = new Array();
-    let item01 = new ItemSenha('01','Santander','www.santander.com.br','Cartao de credito','cris','1234');
-    let item02 = new ItemSenha('02','Bradesco','www.santander.com.br','Cartao de credito','cris','1234');
-    let item03 = new ItemSenha('03','NetFlix','','','','1234');
-    this.lista.push(item01);
-    this.lista.push(item02);
-    this.lista.push(item03);
+   
   }
 
   flip(componente){

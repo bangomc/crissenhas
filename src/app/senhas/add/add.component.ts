@@ -37,7 +37,6 @@ export class AddComponent implements OnInit {
       this.constantesService.setChaveAES(this.chaveEAS);
       let senha = this.cripto.criptografar(this.formulario.value.itemSenhaPass);
       let itemSenha: ItemSenha = new ItemSenha(
-        null,
         this.formulario.value.itemSenhaNome,
         this.formulario.value.itemSenhaEndereco,
         this.formulario.value.itemSenhaDescricao,
